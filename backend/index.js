@@ -17,7 +17,7 @@ app.use(cors({
 
 app.use("/api", router);
 
-app.use("/home", (req, res) => {
+app.use("/", (req, res) => {
   res.status(200).send("Welcome to the home page");
 });
 
