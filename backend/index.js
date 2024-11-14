@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json({ limit: '6mb' })); // Increase as needed
 app.use(cookieParser());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "localhost:3000",
+  origin: "https://clone-e-commerce-project-backend.vercel.app",
   methods: ["POST", "GET", "DELETE"],
   credentials: true,
 }));
