@@ -22,6 +22,7 @@ function App() {
       })
       .then((response) => {
         const responseData = response.data
+        console.log("userDetails", responseData);
 
         if (responseData.success) {
           dispatch(setUserDetails(responseData.data))
