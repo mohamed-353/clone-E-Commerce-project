@@ -4,7 +4,7 @@ const appError = require("../error/appError");
 const httpStatusText = require("../utils/httpStatusText");
 
 const verifyToken = asyncWrapper(async (req, res, next) => {
-  const token = req.cookies.adbda
+  const token = req?.cookies?.adbda
 
   if (!token) {
     const error = appError.create(`Please log in to access this resource.${token}`, 401, httpStatusText.ERROR);

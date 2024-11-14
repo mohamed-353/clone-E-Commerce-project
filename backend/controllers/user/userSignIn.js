@@ -39,11 +39,7 @@ const userSignIn = asyncWrapper(async (req, res, next) => {
     };
     const token = await generateJWT(tokenPayload);
 
-    const tokenOptions = {
-      sameSite: "Strict",
-    };
-
-    res.cookie("adbda", token, tokenOptions).status(StatusCodes.OK).json({
+    res.cookie("adbda", token).status(StatusCodes.OK).json({
       success: true,
       status: httpStatusText.SUCCESS,
       data: { token },
