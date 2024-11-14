@@ -4,8 +4,8 @@ const appError = require("../error/appError");
 const httpStatusText = require("../utils/httpStatusText");
 
 const verifyToken = asyncWrapper(async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  const token = req.cookies?.token || (authHeader && authHeader.startsWith("Bearer ") ? authHeader.split(" ")[1] : null);
+  const authHeader = req?.headers?.authorization;
+  const token = req?.cookies?.token || (authHeader && authHeader.startsWith("Bearer ") ? authHeader.split(" ")[1] : null);
 
   if (!token) {
     const error = appError.create("Please log in to access this resource.", 401, httpStatusText.ERROR);
