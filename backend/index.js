@@ -11,14 +11,17 @@ const app = express();
 app.use(express.json({ limit: '6mb' })); // Increase as needed
 app.use(cookieParser());
 app.use(cors({
-  origin: [process.env.FRONTEND_URL, "http://localhost:3000"],
+  origin: process.env.FRONTEND_URL || "localhost:3000",
   methods: ["POST", "GET", "DELETE"],
   credentials: true,
 }));
 
 app.use("/api", router);
 
-app.use("/home", (req, res) => {
+app.get("/", (req, res) => {
+  res.status(200).send("hello");
+});
+app.get("/home", (req, res) => {
   res.status(200).send("Welcome to the home page");
 });
 
