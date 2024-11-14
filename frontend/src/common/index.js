@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:8080"
+const backendDomain = "https://clone-e-commerce-project.vercel.app";
 
 const summaryApi = {
   signUp: {
@@ -23,11 +23,11 @@ const summaryApi = {
   },
   updateUser: {
     url: `${backendDomain}/api/updateUser`,
-    method: "post",
+    method: "put",
   },
   deleteUser: {
     url: `${backendDomain}/api/deleteUser`,
-    method: "post",
+    method: "delete",
   },
   uploadProduct: {
     url: `${backendDomain}/api/uploadProduct`,
@@ -39,11 +39,11 @@ const summaryApi = {
   },
   updateProduct: {
     url: `${backendDomain}/api/updateProduct`,
-    method: "post",
+    method: "put",
   },
   deleteProduct: {
     url: `${backendDomain}/api/deleteProduct`,
-    method: "post",
+    method: "delete",
   },
   productCategory: {
     url: `${backendDomain}/api/productCategory`,
@@ -51,11 +51,11 @@ const summaryApi = {
   },
   allProductsCategory: {
     url: `${backendDomain}/api/allProductsCategory`,
-    method: "post",
+    method: "get",  // Adjusted to GET if it just retrieves data
   },
   productDetails: {
     url: `${backendDomain}/api/productDetails`,
-    method: "post",
+    method: "get", // Adjusted to GET if retrieving product info
   },
   addToCart: {
     url: `${backendDomain}/api/addToCart`,
@@ -75,7 +75,7 @@ const summaryApi = {
   },
   changeQuantity: {
     url: `${backendDomain}/api/changeQuantity`,
-    method: "post",
+    method: "put",
   },
   deleteCartProduct: {
     url: `${backendDomain}/api/deleteCartProduct`,
@@ -89,6 +89,6 @@ const summaryApi = {
     url: `${backendDomain}/api/filterProduct`,
     method: "post",
   },
-}
+};
 
-export default summaryApi
+export default summaryApi;

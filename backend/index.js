@@ -6,15 +6,23 @@ const connectDb = require("./config/db");
 const router = require("./routes/router");
 const httpStatusText = require("./utils/httpStatusText");
 
-
 const app = express();
-app.use(express.json({ limit: '6mb' })); // Increase as needed
+app.use(express.json({ limit: '6mb' }));
 app.use(cookieParser());
+
+// CORS configuration to allow specific origins
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true
+  origin: ["http://localhost:3000", "https://clone-e-commerce-project.vercel.app"],
+  credentials: true,
 }));
 
+// Optionally handle OPTIONS preflight requests globally
+app.options("*", cors({
+  origin: ["http://localhost:3000", "https://clone-e-commerce-project.vercel.app"],
+  credentials: true,
+}));
+
+// Use routes
 app.use("/api", router);
 
 app.use("/", (req, res) => {
@@ -22,25 +30,23 @@ app.use("/", (req, res) => {
 });
 
 connectDb().then(() => {
-  console.log("connect to DB");
+  console.log("connected to DB");
 });
 
 const PORT = process.env.PORT || 4000;
-
 app.listen(PORT, () => {
   console.log(`server is listening on port ${PORT}`);
 });
 
-// global middleware for not found router
-
-app.all("*", (req, res, next) => {
+// Global middleware for not found routes
+app.all("*", (req, res) => {
   return res.status(404).json({
     status: "error",
     message: "this resource is not available",
   });
 });
 
-// global error handler
+// Global error handler
 app.use((error, req, res, next) => {
   return res.json({
     success: false,
