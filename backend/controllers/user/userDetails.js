@@ -4,9 +4,10 @@ const asyncWrapper = require("../../middleware/asyncWrapper");
 const httpStatusText = require("../../utils/httpStatusText");
 
 const userDetails = asyncWrapper(async (req, res, next) => {
-  const user = await userModel.findById(req.user._id)
+  const user = await userModel.findById(req?.user?._id)
 
-  console.log(req.user._id);
+  console.log("req.user._id", req?.user?._id);
+  console.log("req.user._id", user);
 
   return res.status(StatusCodes.OK).json({
     success: true,
