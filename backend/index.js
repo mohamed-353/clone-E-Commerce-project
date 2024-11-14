@@ -6,34 +6,27 @@ const connectDb = require("./config/db");
 const router = require("./routes/router");
 const httpStatusText = require("./utils/httpStatusText");
 
-
 const app = express();
 app.use(express.json({ limit: '6mb' }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: "https://clone-e-commerce-project-frontend.vercel.app",
   methods: ["POST", "GET", "DELETE", "PUT", "PATCH"],
   credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
 }));
-
-
 
 app.use("/api", router);
 
 app.get("/", (req, res) => {
   res.status(200).send("hello");
 });
-app.get("/home", (req, res) => {
-  res.status(200).send("Welcome to the home page");
-});
 
 connectDb().then(() => {
   console.log("connect to DB");
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
   console.log(`server is listening on port ${PORT}`);
