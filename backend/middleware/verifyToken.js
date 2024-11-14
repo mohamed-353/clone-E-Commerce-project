@@ -7,7 +7,7 @@ const verifyToken = asyncWrapper(async (req, res, next) => {
   const token = req.cookies.token
 
   if (!token) {
-    const error = appError.create("Please log in to access this resource.", 401, httpStatusText.ERROR);
+    const error = appError.create(`Please log in to access this resource.${token}`, 401, httpStatusText.ERROR);
     return next(error);
   }
 
