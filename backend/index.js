@@ -10,13 +10,11 @@ const app = express();
 app.use(express.json({ limit: '6mb' }));
 app.use(cookieParser());
 
-// CORS configuration to allow specific origins
 app.use(cors({
   origin: ["http://localhost:3000", "https://clone-e-commerce-project.vercel.app"],
   credentials: true,
 }));
 
-// Optionally handle OPTIONS preflight requests globally
 app.options("*", cors({
   origin: ["http://localhost:3000", "https://clone-e-commerce-project.vercel.app"],
   credentials: true,
