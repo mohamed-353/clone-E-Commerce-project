@@ -10,8 +10,9 @@ const httpStatusText = require("./utils/httpStatusText");
 const app = express();
 app.use(express.json({ limit: '6mb' })); // Increase as needed
 app.use(cookieParser());
+
 app.use(cors({
-  origin: "https://clone-e-commerce-project-backend.vercel.app",
+  origin: "https://clone-e-commerce-project-frontend.vercel.app",
   methods: ["POST", "GET", "DELETE"],
   credentials: true,
 }));
