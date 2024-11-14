@@ -27,6 +27,12 @@ app.use("/home", (req, res) => {
   res.status(200).send("Welcome to the home page");
 });
 
+app.use("/api/allProductsCategory", (req, res) => {
+  // Your logic for handling this route
+  res.status(200).send("All Products Category");
+});
+
+
 connectDb().then(() => {
   console.log("connected to DB");
 });
