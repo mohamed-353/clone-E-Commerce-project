@@ -35,6 +35,7 @@ const Login = () => {
       });
 
       const responseData = response.data;
+      console.log(responseData);
 
       if (responseData.success) {
         navigate("/");

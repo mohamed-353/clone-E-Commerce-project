@@ -45,7 +45,6 @@ const userSignIn = asyncWrapper(async (req, res, next) => {
       sameSite: "Strict",
     };
 
-
     res.cookie("token", token, tokenOptions).status(StatusCodes.OK).json({
       success: true,
       status: httpStatusText.SUCCESS,
