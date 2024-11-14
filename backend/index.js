@@ -17,6 +17,9 @@ app.use(cors({
 
 app.use("/api", router);
 
+app.use("/home", (req, res) => {
+  res.status(200).send("Welcome to the home page");
+});
 
 connectDb().then(() => {
   console.log("connect to DB");
