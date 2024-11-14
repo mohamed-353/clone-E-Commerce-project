@@ -1,31 +1,25 @@
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 const asyncWrapper = require("./asyncWrapper");
 const appError = require("../error/appError");
 const httpStatusText = require("../utils/httpStatusText");
 
 const verifyToken = asyncWrapper(async (req, res, next) => {
-  const authHeader = req.headers["Authorization"] || req.headers["authorization"];
+  const authHeader = req.headers.authorization;
+  const token = req.cookies?.token || (authHeader && authHeader.startsWith("Bearer ") ? authHeader.split(" ")[1] : null);
 
-  if (!authHeader && !req.cookies?.token) {
-    const error = appError.create(
-      "Please Login...",
-      401,
-      httpStatusText.ERROR
-    );
+  if (!token) {
+    const error = appError.create("Please log in to access this resource.", 401, httpStatusText.ERROR);
     return next(error);
   }
-
-  const token = req.cookies?.token || authHeader.split(" ")[1]
 
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
     req.user = user;
     next();
-  } catch {
-    const error = appError.create("invalid token", 401, httpStatusText.ERROR);
+  } catch (err) {
+    const error = appError.create("Invalid token. Please log in again.", 401, httpStatusText.ERROR);
     return next(error);
   }
-})
+});
 
-
-module.exports = verifyToken
+module.exports = verifyToken;

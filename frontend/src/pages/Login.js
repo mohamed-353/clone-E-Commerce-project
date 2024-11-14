@@ -29,22 +29,27 @@ const Login = () => {
     e.preventDefault();
     setDisable(true);
 
-    await axios
-      .post(summaryApi.signIn.url, data, {
+    try {
+      const response = await axios.post(summaryApi.signIn.url, data, {
         withCredentials: true,
-      })
-      .then((response) => {
-        const responseData = response.data;
-
-        if (responseData.success) {
-          navigate("/");
-          fetchUserDetails();
-          fetchAddToCartCount();
-        } else {
-          toast.error(responseData.message);
-        }
-        setDisable(false);
       });
+
+      const responseData = response.data;
+
+      if (responseData.success) {
+        navigate("/");
+        fetchUserDetails();
+        fetchAddToCartCount();
+      } else {
+        toast.error(responseData.message);
+      }
+    } catch (error) {
+      // Handle any errors
+      toast.error(error.response?.data?.message || "An error occurred. Please try again.");
+    } finally {
+      // Re-enable the button after completion
+      setDisable(false);
+    }
   };
 
   return (

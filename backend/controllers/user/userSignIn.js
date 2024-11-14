@@ -41,8 +41,8 @@ const userSignIn = asyncWrapper(async (req, res, next) => {
 
     const tokenOptions = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Strict'
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Strict",
     };
 
 
