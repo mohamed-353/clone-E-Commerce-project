@@ -6,6 +6,8 @@ const httpStatusText = require("../../utils/httpStatusText");
 const userDetails = asyncWrapper(async (req, res, next) => {
   const user = await userModel.findById(req.user._id)
 
+  console.log(req.user._id);
+
   return res.status(StatusCodes.OK).json({
     success: true,
     status: httpStatusText.SUCCESS,
