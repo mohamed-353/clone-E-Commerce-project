@@ -39,11 +39,7 @@ const userSignIn = asyncWrapper(async (req, res, next) => {
     };
     const token = await generateJWT(tokenPayload);
 
-    const tokenOptions = {
-      secure: true
-    };
-
-    res.cookie("token", token, tokenOptions).status(StatusCodes.OK).json({
+    res.cookie("token", token).status(StatusCodes.OK).json({
       success: true,
       status: httpStatusText.SUCCESS,
       data: { token },
