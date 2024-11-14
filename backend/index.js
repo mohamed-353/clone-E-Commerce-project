@@ -10,11 +10,15 @@ const httpStatusText = require("./utils/httpStatusText");
 const app = express();
 app.use(express.json({ limit: '6mb' }));
 app.use(cookieParser());
+
 app.use(cors({
   origin: process.env.FRONTEND_URL,
-  methods: ["POST", "GET", "DELETE"],
+  methods: ["POST", "GET", "DELETE", "PUT", "PATCH"],
   credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
+
 
 app.use("/api", router);
 
