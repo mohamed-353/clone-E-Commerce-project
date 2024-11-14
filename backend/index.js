@@ -17,6 +17,8 @@ app.use(cors({
 
 app.use("/api", router);
 
+console.log("adbda");
+
 connectDb().then(() => {
   console.log("connect to DB");
 });
