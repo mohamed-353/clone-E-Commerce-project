@@ -1,4 +1,4 @@
-const backendDomain = "localhost:8080";
+const backendDomain = "https://clone-e-commerce-project-backend.vercel.app";
 
 const summaryApi = {
   signUp: {
