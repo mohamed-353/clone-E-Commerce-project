@@ -51,11 +51,11 @@ const summaryApi = {
   },
   allProductsCategory: {
     url: `${backendDomain}/api/allProductsCategory`,
-    method: "get",  // Adjusted to GET if it just retrieves data
+    method: "get",
   },
   productDetails: {
     url: `${backendDomain}/api/productDetails`,
-    method: "get", // Adjusted to GET if retrieving product info
+    method: "get",
   },
   addToCart: {
     url: `${backendDomain}/api/addToCart`,

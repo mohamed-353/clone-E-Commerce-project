@@ -25,7 +25,7 @@ app.options("*", cors({
 // Use routes
 app.use("/api", router);
 
-app.use("/", (req, res) => {
+app.use("/home", (req, res) => {
   res.status(200).send("Welcome to the home page");
 });
 
