@@ -1,4 +1,4 @@
-const backendDomain = "https://clone-e-commerce-project.vercel.app";
+const backendDomain = "https://clone-e-commerce-project-backend.vercel.app";
 
 const summaryApi = {
   signUp: {
