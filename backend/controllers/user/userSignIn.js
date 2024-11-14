@@ -40,7 +40,7 @@ const userSignIn = asyncWrapper(async (req, res, next) => {
     const token = await generateJWT(tokenPayload);
 
     const tokenOptions = {
-      httpOnly: true,
+      httpsOnly: true,
       secure: true
     };
 
