@@ -11,7 +11,7 @@ app.use(express.json({ limit: '6mb' }));
 app.use(cookieParser());
 
 app.use("/api", cors({
-  origin: process.env.FRONTEND_URL || "https://clone-e-commerce-project-frontend.vercel.app",
+  origin: [process.env.FRONTEND_URL, "localhost:3000"],
   methods: ["POST", "GET", "DELETE", "PUT", "PATCH"],
   credentials: true,
 }));
