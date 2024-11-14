@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -25,7 +24,7 @@ const CategoryList = () => {
 
   useEffect(() => {
     fetchProductCategory()
-  }, [])
+  },[])
 
   return (
     <div className='container mx-auto p-4'>

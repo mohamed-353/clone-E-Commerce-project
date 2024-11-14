@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 import { useNavigate } from "react-router-dom"

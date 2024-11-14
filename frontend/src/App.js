@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
@@ -23,7 +22,7 @@ function App() {
       })
       .then((response) => {
         const responseData = response.data
-        console.log("userDetails", response);
+        console.log("userDetails", responseData);
 
         if (responseData.success) {
           dispatch(setUserDetails(responseData.data))
