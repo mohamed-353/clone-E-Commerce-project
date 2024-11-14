@@ -46,6 +46,13 @@ function App() {
   useEffect(() => {
     fetchUserDetails();
     fetchAddToCartCount();
+    axios.get('https://clone-e-commerce-project-backend.vercel.app/api/productCategory', { withCredentials: true })
+      .then(response => {
+        console.log('Product Data:', response.data); // Check the console to see the response
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      });
   }, []);
 
   return (
